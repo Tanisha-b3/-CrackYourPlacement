@@ -1,0 +1,25 @@
+SubArrays Sum divisible by k
+
+
+public class Solution {
+    public int subarraysDivByK(int[] nums, int k) {
+        int prifix=0;
+        int count =0;
+        HashMap<Integer, Integer> Map = new HashMap<>();
+        Map.put(0, 1);
+       for(int i=0;i<nums.length;i++){
+           prifix+=nums[i];
+
+           int mod = prifix%k;
+           if(mod<0){
+            mod+=k; }
+           if(Map.containsKey(mod)){
+           count+=Map.get(mod);
+           Map.put(mod,Map.get(mod)+1);
+           }
+           else
+           Map.put(mod,1);
+            }
+    return count;
+        }
+}
