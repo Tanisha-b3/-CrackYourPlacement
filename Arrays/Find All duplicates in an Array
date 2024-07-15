@@ -1,0 +1,19 @@
+Find All duplicates in an Array
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+     HashMap<Integer,Integer> Map= new HashMap<>();
+     for(int i:nums){
+        Map.put(i,Map.getOrDefault(i,0)+1);
+     }
+       List<Integer> list = new ArrayList<>();
+       for(int i:Map.keySet()){
+        if(Map.get(i)>1){
+        list.add(i);
+       }
+     
+    }
+      return list;
+    }
+
+}
