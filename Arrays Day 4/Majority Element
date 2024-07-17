@@ -1,0 +1,18 @@
+Majority Element
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int n = nums.length;
+        for(int num: nums){
+            map.put(num, map.getOrDefault(num,0)+1);
+
+        }
+        for(int item : map.keySet()){
+            if(map.get(item) > n/2){
+                return item;
+            }
+        }
+        return -1;
+    }
+}
