@@ -1,0 +1,25 @@
+Sort Linked List of 0s, 1s and 2s 
+
+class Solution {
+    static Node segregate(Node head) {
+        // add your code here
+         if (head == null || head.next == null) {
+            return head;
+         }
+        ArrayList<Integer> arr = new ArrayList<>();
+        Node temp = head;
+        while (temp != null) {
+            arr.add(temp.data);
+            temp = temp.next;
+        }
+
+        Collections.sort(arr);
+        temp = head;
+        for (int value : arr) {
+            temp.data = value;
+            temp = temp.next;
+        }
+
+        return head;
+    }
+}
