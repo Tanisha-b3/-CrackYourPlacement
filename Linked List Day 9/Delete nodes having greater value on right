@@ -1,0 +1,30 @@
+Delete nodes having greater value on right
+
+class Solution
+{
+    Node compute(Node head)
+    {
+     Node temp = head;
+     Node dummy = new Node(0);
+     Node node = dummy;
+     while(temp!=null){
+         if(!check(temp)){
+             node.next=temp;
+             node= node.next;
+         }
+         temp= temp.next;
+     }
+      return dummy.next;
+    }
+    boolean check(Node head){
+        Node temp = head;
+        while(head!=null){
+            if(temp.data<head.data){
+                return true;
+            }
+            head = head.next;
+        }
+        return false;
+    }
+}
+  
