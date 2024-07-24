@@ -1,0 +1,45 @@
+Backspace String Compare
+
+import java.util.Stack;
+
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        Stack<Character> st = new Stack<>();
+        Stack<Character> stack = new Stack<>();
+        
+        // Process string s
+        for (char c : s.toCharArray()) {
+            if (c == '#') {
+                if (!st.isEmpty()) {
+                    st.pop();
+                }
+            } else {
+                st.push(c);
+            }
+        }
+        
+        // Process string t
+        for (char c : t.toCharArray()) {
+            if (c == '#') {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+            } else {
+                stack.push(c);
+            }
+        }
+        
+        // Compare the contents of the stacks
+        StringBuilder sb1 = new StringBuilder();
+        while (!st.isEmpty()) {
+            sb1.append(st.pop());
+        }
+        
+        StringBuilder sb2 = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb2.append(stack.pop());
+        }
+        
+        return sb1.toString().equals(sb2.toString());
+    }
+}
