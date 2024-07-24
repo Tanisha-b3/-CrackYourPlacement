@@ -1,0 +1,30 @@
+Evaluation of Postfix Expression
+
+
+class Solution
+{
+    //Function to evaluate a postfix expression.
+    public static int evaluatePostFix(String S)
+    {
+        Stack<Integer> s = new Stack<>();
+        char[] c = S.toCharArray();
+        for(int i=0;i<c.length;i++){
+            if(c[i]=='+' || c[i]=='-' || c[i]=='*' || c[i]=='/'){
+                int a = s.pop();
+                int b = s.pop();
+                if(c[i]=='+'){
+                    s.push(b+a);
+                }else if(c[i]=='-'){
+                    s.push(b-a);
+                }else if(c[i]=='*'){
+                    s.push(b*a);
+                }else{
+                    s.push(b/a);
+                }
+            }else{
+                s.push(Integer.parseInt(String.valueOf(c[i])));
+            }
+        }
+         return s.peek();
+    }
+}
