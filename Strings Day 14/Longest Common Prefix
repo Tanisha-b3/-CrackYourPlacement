@@ -1,0 +1,19 @@
+Longest Common Prefix
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs);
+        String c = strs[0];
+        String k = strs[strs.length-1];
+        StringBuilder ans= new StringBuilder();
+       for(int i=0;i<Math.min(c.length(),k.length());i++){
+        if(c.charAt(i)!=k.charAt(i)){
+        return ans.toString();
+        }
+        
+        ans.append(c.charAt(i));
+       }
+    
+    return ans.toString();
+}
+}
