@@ -1,0 +1,22 @@
+Generate Parentheses
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+    List<String> result = new ArrayList<>();
+    recursiveFunction(0, 0, n, "", result);
+    return result;
+    }
+
+    public void recursiveFunction(int open,int close, int n, String current, List<String> list) {
+        if(current.length() == 2*n) {
+            list.add(current);
+            return;
+        }
+        if(open < n) {
+            recursiveFunction(open + 1, close, n, current+"(", list);
+        }
+        if(close < open) {
+            recursiveFunction(open, close + 1, n, current+")", list);
+        } 
+    }
+}
