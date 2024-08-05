@@ -1,0 +1,21 @@
+Convert Sorted Array to Binary Search Tree
+
+class Solution {
+    TreeNode helper(int[] nums , int high , int low){
+        if(low>high){
+            return null;
+        }
+        int mid=(high+low)/2;
+        TreeNode Node=new TreeNode(nums[mid]);
+         if(high==low){
+            return Node;
+        }
+        Node.left=helper(nums,mid-1,low);
+        Node.right=helper(nums,high,mid+1);
+        return Node;
+    }
+    public TreeNode sortedArrayToBST(int[] nums) {
+        TreeNode root = helper(nums, nums.length-1,0);
+        return root;
+    }
+}
