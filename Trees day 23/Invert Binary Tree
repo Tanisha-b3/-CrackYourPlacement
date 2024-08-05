@@ -1,0 +1,19 @@
+Invert Binary Tree
+
+class Solution {
+    public void swap(TreeNode root){
+        if(root==null){
+            return;
+        }
+        TreeNode s= root.right;
+        root.right= root.left;
+        root.left=s;
+        swap(root.left);
+        swap(root.right);
+
+    }
+    public TreeNode invertTree(TreeNode root) {
+        swap(root);
+        return root;
+    }
+}
