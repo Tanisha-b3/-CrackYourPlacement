@@ -1,0 +1,32 @@
+Binary Tree Paths
+
+
+class Solution {
+    public List<String> binaryTreePaths(final TreeNode root) {
+     List<String> result = new ArrayList<>();
+
+        helper(result, new StringBuilder(), root);
+
+        return result;
+    }
+
+    private void helper(List<String> result, StringBuilder sb, TreeNode root) {
+        int tmp = sb.length();
+
+        if(root.left == null && root.right == null) {
+            sb.append(root.val);
+            result.add(sb.toString());
+        } else {
+            sb.append(root.val);
+            sb.append("->");
+
+            if(root.right != null)
+                helper(result, sb, root.right);
+
+            if(root.left != null)
+                helper(result, sb, root.left);
+        }
+
+        sb.setLength(sb.length() - (sb.length() - tmp));
+    }
+}
