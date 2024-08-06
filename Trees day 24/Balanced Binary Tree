@@ -1,0 +1,21 @@
+Balanced Binary Tree
+
+class Solution {
+    static int getheight(TreeNode root){
+        if(root == null)
+        return 0;
+        int lh= getheight(root.left);
+        int rh = getheight(root.right);
+        if(lh==-1 || rh==-1 || Math.abs(lh-rh)>1){
+            return -1;
+        }
+        int height=1+(Math.max(lh,rh));
+        return height;
+    }
+    public boolean isBalanced(TreeNode root) {
+        if(getheight(root)==-1){
+            return false;
+        }
+        return true;
+    }
+}
