@@ -1,0 +1,28 @@
+Binary Tree to DLL
+
+class Solution
+{
+    //Function to convert binary tree to doubly linked list and return it.
+    Node bToDLL(Node root)
+    {
+	//  Your code here	
+	Node []arr={null,null};
+	 help(root,arr);
+	 return arr[1];
+    }
+    void help(Node root,Node []arr){
+        if(root==null)
+        return ;
+        help(root.left,arr);
+        if(arr[1]==null){
+            arr[1]=root;
+            arr[0]=root;
+        }
+        else {
+            root.left=arr[0];
+            arr[0].right=root;
+            arr[0]=root;
+        }
+     help(root.right,arr);
+    } 
+}
