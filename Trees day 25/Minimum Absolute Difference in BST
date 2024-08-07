@@ -1,0 +1,22 @@
+Minimum Absolute Difference in BST
+
+class Solution {
+    ArrayList<Integer> arr = new ArrayList<>();
+      public void help(TreeNode root){
+         if(root==null){
+            return;
+         }
+         arr.add(root.val);
+         help(root.left);
+         help(root.right);
+     }
+    public int getMinimumDifference(TreeNode root) {
+        help(root);
+         Collections.sort(arr);
+        int min=Integer.MAX_VALUE;
+        for(int i=1;i<arr.size();i++){
+            min = Math.min(min,arr.get(i)-arr.get(i-1));
+        }
+        return min;
+    }
+}
