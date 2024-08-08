@@ -1,0 +1,30 @@
+Unique Binary Search Trees II
+
+class Solution {
+    public List<TreeNode> generateTrees(int n) {
+        return n > 0 ? generatetrees(1, n) : new ArrayList<>();
+    }
+
+    private List<TreeNode> generatetrees(int start, int end) {
+        List<TreeNode> trees = new ArrayList<>();
+        if (start > end) {
+            trees.add(null);
+            return trees;
+        }
+
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> leftt = generatetrees(start, i - 1);
+            List<TreeNode> rightt = generatetrees(i + 1, end);
+
+            for (TreeNode l : leftt) {
+                for (TreeNode r : rightt) {
+                    TreeNode current_tree = new TreeNode(i);
+                    current_tree.left = l;
+                    current_tree.right = r;
+                    trees.add(current_tree);
+                }
+            }
+        }
+        return trees;
+    }
+}
